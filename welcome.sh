@@ -1,8 +1,8 @@
 #!/bin/bash
 
-NAME=${params.NAME}
-LAST_NAME=${params.LAST_NAME}
-IS_TRUE=${params.IS_TRUE}
+NAME=$1
+LAST_NAME=$2
+IS_TRUE=$3
 
 if [[ $IS_TRUE == "true" ]]
 then
