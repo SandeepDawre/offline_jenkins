@@ -10,6 +10,7 @@ pipeline {
             steps {
                 //docker image build -t teamcloudethix:v1 .
                 echo "Hello ${params.NAME}"
+                sh 'welcome.sh ${params.NAME} ${params.LAST_NAME} ${params.IS_TRUE}'
             }
         }
         stage('Calling Last Name') {
