@@ -27,4 +27,10 @@ pipeline {
             }
         }
     }
+    post { 
+        always { 
+            echo 'Deleting Project now !! '
+            deleteDir()
+        }
+    }
 }
