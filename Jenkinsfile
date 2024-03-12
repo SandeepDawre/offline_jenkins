@@ -10,6 +10,9 @@ pipeline {
     }
     stages {
         stage('Calling Name') {
+            when {
+                branch 'master'
+            }
             steps {
                 //docker image build -t teamcloudethix:v1 .
                 echo "Hello ${params.NAME}"
@@ -18,6 +21,9 @@ pipeline {
             }
         }
         stage('Calling Last Name') {
+            when {
+                branch 'dev'
+            }
             steps {
                 //docker login
                 //docker image push teamcloudethix:v1
@@ -26,6 +32,9 @@ pipeline {
             }
         }
         stage('Calling all ') {
+            when {
+                branch 'qa'
+            }
             steps {
                 //export KUBECONFIG=CONFIG_PATH
                 //kubectl apply -f  kube/.
