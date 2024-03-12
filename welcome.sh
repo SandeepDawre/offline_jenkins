@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#NAME=$1
-#LAST_NAME=$2
-#IS_TRUE=$3
 
 if [[ ${params.IS_TRUE} == "true" ]]
 then
