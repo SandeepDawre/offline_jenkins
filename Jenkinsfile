@@ -14,16 +14,17 @@ pipeline {
                 branch 'master'
             }
             input {
-                message "Should we continue?"
-                ok "Yes, we should."
+                message "Terraform Apply"
+                ok "Procced"
                 submitter "alice,bob"
                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'TF_INPUT', defaultValue: 'Yes', description: 'Do you want to apply Terraform?')
                 }
             }
             steps {
                 echo "Hello ${params.NAME}"
-                echo "Hello, ${PERSON}, nice to meet you."
+                echo "Applying Terraform ? ${TF_INPUT}"
+                //echo "Hello, ${PERSON}, nice to meet you."
                 sh "/bin/bash ./welcome.sh ${params.NAME} ${params.LAST_NAME} ${params.IS_TRUE}"
                 sh 'echo "Calling Holy Month $env.Month"'
             }
