@@ -13,11 +13,19 @@ pipeline {
             when {
                 branch 'master'
             }
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
             steps {
-                //docker image build -t teamcloudethix:v1 .
                 echo "Hello ${params.NAME}"
+                echo "Hello, ${PERSON}, nice to meet you."
                 sh "/bin/bash ./welcome.sh ${params.NAME} ${params.LAST_NAME} ${params.IS_TRUE}"
-                sh 'echo "Calling Holy Month $Month"'
+                sh 'echo "Calling Holy Month $env.Month"'
             }
         }
         stage('Calling Last Name') {
@@ -25,8 +33,6 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                //docker login
-                //docker image push teamcloudethix:v1
                 echo "Hello ${params.LAST_NAME}"
                 sh 'echo "Calling Holy Month $Month"'
             }
@@ -36,8 +42,6 @@ pipeline {
                 branch 'qa'
             }
             steps {
-                //export KUBECONFIG=CONFIG_PATH
-                //kubectl apply -f  kube/.
                 echo "Hello ${params.NAME} ${params.LAST_NAME} ${params.IS_TRUE}"
                 sh 'echo "Calling Holy Month $Month"'
             }
