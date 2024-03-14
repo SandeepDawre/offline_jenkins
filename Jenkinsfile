@@ -4,9 +4,11 @@ pipeline {
         stage('Docker Image Build') {
             steps {
                 echo "Building Docker Image Logging in to Docker Hub & Pushing the Image" 
-                def app = docker.build("latest")
-                docker.withRegistry('https://registry.hub.docker.com/teamcloudethix/cdex-jenkins', 'dockerhub_creds') {
+                script {
+                    def app = docker.build("latest")
+                    docker.withRegistry('https://registry.hub.docker.com/teamcloudethix/cdex-jenkins', 'dockerhub_creds') {
                     app.push()
+                    }
                 }
             }
         }
