@@ -32,7 +32,7 @@ pipeline {
                 sh "docker tag teamcloudethix/dev-cdex-jenkins:latest  teamcloudethix/qa-cdex-jenkins:latest" 
                 script {
                     docker.withRegistry('https://registry.hub.docker.com/teamcloudethix/qa-cdex-jenkins', 'qa-dockerhub_creds') {
-                    app.push() 
+                    docker.image("teamcloudethix/qa-cdex-jenkins:latest").push()
                     }
                 }
                 sh 'echo Image Pushed to QA'
@@ -54,7 +54,7 @@ pipeline {
                 sh "docker tag teamcloudethix/qa-cdex-jenkins:latest  teamcloudethix/stage-cdex-jenkins:latest" 
                 script {
                     docker.withRegistry('https://registry.hub.docker.com/teamcloudethix/stage-cdex-jenkins', 'stage-dockerhub_creds') {
-                    app.push() 
+                    docker.image("teamcloudethix/stage-cdex-jenkins:latest").push()
                     }
                 }
                 sh 'echo Image Pushed to STAGE'
@@ -76,7 +76,7 @@ pipeline {
                 sh "docker tag teamcloudethix/stage-cdex-jenkins:latest  teamcloudethix/prod-cdex-jenkins:latest" 
                 script {
                     docker.withRegistry('https://registry.hub.docker.com/teamcloudethix/prod-cdex-jenkins', 'prod-dockerhub_creds') {
-                    app.push() 
+                    docker.image("teamcloudethix/prod-cdex-jenkins:latest").push()
                     }
                 }
                 sh 'echo Image Pushed to Prod'
