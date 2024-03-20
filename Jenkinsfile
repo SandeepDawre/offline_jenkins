@@ -86,6 +86,7 @@ def dockerPullTagPush (string SRC_DH_URL , string SRC_DH_CREDS , string SRC_DH_T
     //FOR PULL
 	docker.withRegistry('${SRC_DH_URL}', '${SRC_DH_CREDS}') {
     docker.image('${SRC_DH_TAG}').pull()
+    }
     sh 'echo Image pulled successfully...'
 
     //FOR TAG
@@ -95,6 +96,7 @@ def dockerPullTagPush (string SRC_DH_URL , string SRC_DH_CREDS , string SRC_DH_T
     //FOR PUSH
     docker.withRegistry('${DEST_DH_URL}', '${DEST_DH_CREDS}') {
     docker.image('${DEST_DH_TAG}').push()
+    }
 
     sh 'echo Image Pushed successfully...'
     sh 'echo Deleting Local docker Images'
