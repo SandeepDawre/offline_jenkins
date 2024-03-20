@@ -6,7 +6,7 @@ pipeline {
                 script {
                     withKubeCredentials(kubectlCredentials: [[ credentialsId: 'dev_kube_config' ]]) {
                         
-                        kubectl get pod --all-namespaces
+                        sh 'kubectl get pod --all-namespaces'
 
                     }
                 }
