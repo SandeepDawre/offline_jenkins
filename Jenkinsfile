@@ -1,6 +1,6 @@
 @Library("cedex_shared_lib@release") _
 
-DockerDeliveryPromotionPipeline{
+DockerDeliveryPromotionPipelineK8S{
 
 platform = "docker_shared_lib"
 

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx_jenkins-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx_jenkins
+  template:
+    metadata:
+      labels:
+        app: nginx_jenkins
+    spec:
+      containers:
+        - name: nginx_jenkins_c
+          image: teamcloudethix/{{ACCOUNT}}-cdex-jenkins:{{COMMITID}}
+          ports:
+            - containerPort: 80
