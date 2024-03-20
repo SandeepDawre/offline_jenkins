@@ -13,7 +13,7 @@ spec:
         app: nginx-jenkins
     spec:
       containers:
-        - name: nginx-jenkins_c
+        - name: nginx-jenkins-c
           image: teamcloudethix/{{ACCOUNT}}-cdex-jenkins:{{COMMITID}}
           ports:
             - containerPort: 80
