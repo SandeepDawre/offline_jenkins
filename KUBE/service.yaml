@@ -4,7 +4,7 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: nginx_jenkins
+    app: nginx-jenkins
   ports:
     - protocol: "TCP"
       port: 80
